@@ -20,21 +20,21 @@ We’ll be testing using Joe’s senior project, Cede.io ( https://github.com/Jo
 - Manage most things from the website or the command line tool
 - Auto scaling (needs tested)
 
-### How to use Heroku
+### How to Host Cede.io via Heroku
 
-- Create a Heroku account at https://id.heroku.com/login
-- Once on the Heroku Dashboard, create a new Heroku app
-- Select the locale where the app should be hosted, click `Create App`
-- Add a mLab MongoDB Heroku add-on to the app by going to `Resources` > `Find more add-ons` > search for `mlab` > select `mLab MongoDB` > `Install mLab MongoDB` > select the app you just created > `continue` > select a plan (probably the free one) > `Provision`
-- Add a SESSION_SECRET to your Heroku app's environment variables by going to your app's Heroku dashboard > `Settings` > `Reveal environment variables` > type `SESSION_SECRET` as the key and anything as the value > `Add`
-- Install the Heroku CLI from https://devcenter.heroku.com/articles/heroku-command-line
-- Open a teriminal and run `heroku login` to log in to Heroku
-- Go to where you wish to clone the repo locally and run `git clone https://github.com/JoeDuncko/cede.io.git`
-- Add the Heroku server as a git remote via `heroku git:remote -a [HEROKU APP NAME]`
-- Push the repository to Heroku via `git push heroku master`
-- Heroku should automatically set up and start the app in the cloud
+1. Create a Heroku account at https://id.heroku.com/login
+2. Once on the Heroku Dashboard, create a new Heroku app
+3. Select the locale where the app should be hosted, click `Create App`
+4. Add a mLab MongoDB Heroku add-on to the app by going to `Resources` > `Find more add-ons` > search for `mlab` > select `mLab MongoDB` > `Install mLab MongoDB` > select the app you just created > `continue` > select a plan (probably the free one) > `Provision`
+5. Add a SESSION_SECRET to your Heroku app's environment variables by going to your app's Heroku dashboard > `Settings` > `Reveal environment variables` > type `SESSION_SECRET` as the key and anything as the value > `Add`
+6. Install the Heroku CLI from https://devcenter.heroku.com/articles/heroku-command-line
+7. Open a teriminal and run `heroku login` to log in to Heroku
+8. Go to where you wish to clone the repo locally and run `git clone https://github.com/JoeDuncko/cede.io.git`
+9. Add the Heroku server as a git remote via `heroku git:remote -a [HEROKU APP NAME]`
+10. Push the repository to Heroku via `git push heroku master`
+11. Heroku should automatically set up and start the app in the cloud
 
-### tool evaluation criteria
+### Tool Evaluation Criteria
 
 Positives
 
@@ -47,7 +47,10 @@ Positives
 
 Drawbacks
 
-- https://devcenter.heroku.com/articles/limits
 - Incomplete control over all of infrastructure
-- Can't SSH into Heroku box
-- Can't save files onto Heroku box or access its storage at runtime
+- Can't SSH into Heroku box ( https://devcenter.heroku.com/articles/one-off-dynos#ssh-access )
+- Can't save files onto Heroku box or access its storage at runtime ( https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem )
+
+## References
+
+- Heroku technical limits: https://devcenter.heroku.com/articles/limits
