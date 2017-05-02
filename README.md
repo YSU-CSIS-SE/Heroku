@@ -19,10 +19,11 @@ We’ll be testing using Joe’s senior project, [Cede.io](https://github.com/Jo
 - [Easily keep the deployment version in line with Master on GitHub](https://devcenter.heroku.com/articles/github-integration)
 - Addons for common utilities like storage and databases (Cede.io uses the mLab MongoDB Heroku add-on)
 - Extensive free tier (sleeps after 30 minutes of activity, limited active time per month)
-- With or without a custom domain name (use cedegame.com for the actual game)
+- With or without a custom domain name (use [cedegame.com](http://cedegame.com/) for the actual game)
 - Can see server stats via web
 - Manage most things from the website or the command line tool
-- Auto scaling (needs tested)
+
+NOTE: Cede.io actually *can't* scale on Heroku in its current iteration because it does work on a timer, that would be doubled if the app had multiple instances (as per how Heroku scales). More information [here](https://devcenter.heroku.com/articles/scaling#understanding-concurrency). I've thought about using a task queue like RabbidMQ or breaking the timed tasks out to a separate server that only scales vertically (more powerful box). More investigation needs done on this.
 
 ### How to Host Cede.io via Heroku
 
@@ -48,12 +49,21 @@ Positives
 - Free tier
 - Able to use custom domains
 - Able to manage most things from the website
+- Easy to scale app horizontally [as long as your app is set up in a way that supports doing so](https://devcenter.heroku.com/articles/scaling)
 
 Drawbacks
 
 - Incomplete control over all of infrastructure
 - Can't SSH into Heroku box, [see this article for more information](https://devcenter.heroku.com/articles/one-off-dynos#ssh-access)
 - Can't save files onto Heroku box or access its storage at runtime, [see this article for more information](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem)
+
+### Statistics built into Heroku's dashboard
+
+- Memory usage
+- Response time
+- Throughput (requests/min)
+
+![image](https://cloud.githubusercontent.com/assets/6749768/25643976/e84554f4-2f70-11e7-806d-8b32844b27f2.png)
 
 ## References
 
