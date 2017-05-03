@@ -57,6 +57,16 @@ Drawbacks
 - Can't SSH into Heroku box, [see this article for more information](https://devcenter.heroku.com/articles/one-off-dynos#ssh-access)
 - Can't save files onto Heroku box or access its storage at runtime, [see this article for more information](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem)
 
+### DO NOT use Heroku if...
+
+- You require scaling more complex than simple horizontal scale
+- You need to SSH into your app while it is in production
+- You need to write to the disc that your app is running on - Heroku apps are immutable
+- You want to have fine grain control over your ecosystem
+- You require very low latency between your database, storage, or app instances
+- You are running source code that you do not trust Heroku or Heroku's hosts seeing (for whatever reason)
+- You want to run multiple apps on the same instance (ie, like a media center machine, or anything else multipurpose)
+
 ### Statistics built into Heroku's dashboard
 
 - Memory usage
